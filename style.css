@@ -1,0 +1,42 @@
+body {
+    font-family: Arial;
+}
+
+.container {
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.restore-btn,
+.delete-btn {
+
+    border: none;
+    color: white;
+    cursor: pointer;
+    
+}
+
+.restore-btn {
+    background-color: green;
+
+}
+
+.delete-btn {
+    background-color: red;
+}
