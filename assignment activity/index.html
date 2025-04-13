@@ -4,42 +4,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deleted Tasks</title>
+    <title>Task Manager</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+
 </head>
 
 <body>
+    <!-- index.html -->
+    <a href="deletefolder.html">Deleted Tasks</a> <!-- Page Linking -->
+
     <div class="container">
-        <h2>Deleted Tasks</h2>
+        <div class="form-section">
+            <form id="taskForm">
+                <input type="text" id="taskName" placeholder="Enter task" required />
+                <select id="priority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+                <button type="submit">Create Task</button>
+            </form>
+        </div>
 
-        <!-- Filter Dropdown -->
-        <select id="filterPriority">
-            <option value="all">Filter by Priority</option>
-            <option value="low">Low</option>
-            <option value="high">High</option>
-        </select>
-        <select id="pending">
-            <option value="all">pending</option>
-            <option value="low">Low</option>
-            <option value="high">High</option>
-        </select>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Priority</th>
-                    <th>Status</th>
-                    <th>Restore</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody id="taskTable">
-                <!-- JavaScript will add rows here -->
-            </tbody>
-        </table>
+        <div class="table-section">
+            <table id="taskTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody id="taskTableBody">
+                    <!-- Tasks will appear here -->
+                </tbody>
+            </table>
+        </div>
     </div>
+
+    <script src="script.js" defer>
+        function deleteTask(index) {
+            const deleted = tasks.splice(index, 1)[0];
+            let deletedTasks = JSON.parse(localStorage.getItem('deletedTasks')) || [];
+            deletedTasks.push(deleted);
+            localStorage.setItem('deletedTasks', JSON.stringify(deletedTasks));
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            renderTasks();
+        }
+
+    </script>
+
+    console.log("JavaScript loaded");
+    const taskForm = document.getElementById('taskForm');
+    </script>
 </body>
 
 </html>

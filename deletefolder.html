@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <a href="index.html">Back to Task Manager</a>
+    <h2>Deleted Tasks</h2>
+    <table id="deletedTasksTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Restore</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody id="deletedTableBody">
+            <!-- Deleted tasks appear here -->
+        </tbody>
+    </table>
+
+
+    <script>
+        const deletedTableBody = document.getElementById('deletedTableBody');
+        const deletedTasks = JSON.parse(localStorage.getItem('deletedTasks')) || [];
+
+        deletedTasks.forEach(task => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${task.name}</td>
+                <td>${task.priority}</td>
+                <td>${task.status}</td>
+            `;
+            deletedTableBody.appendChild(row);
+        });
+    </script>
+    
+</body>
+
+
+</html>
